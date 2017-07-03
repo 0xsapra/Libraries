@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Library</title>
+	<script src="lib.min.js" type="text/javascript" charset="utf-8" async defer></script>
+	
+</head>
+<body>
+	
+	<canvas id=canvas height=600 width=600></canvas>
+
+	<br>
+	Image Processing..
+</body>
+
+
+	<script>
+		var image;
+		window.onload=function(){
+			image=new Processor(document.getElementById('canvas'));
+			
+			image.addImage("1.png",function(){
+				image.effector="crazy"; //effector can be  light, grayscale,crazy,pencil,sharpen,smooth
+				image.effect();
+				
+				// image.draw(); gives you paint brush to draw on screen
+				// image.color="red"; to set the color of that paint brush
+				//  image.radius="1"; to set the size of stroke when painting
+
+				// image.resize();  call this function to resize the image to resize images
+
+
+			});	
+
+			
+			
+		};
+
+		
+
+	
+		
+	</script>
+
+
+</html>

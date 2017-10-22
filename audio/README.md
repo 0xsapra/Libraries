@@ -63,6 +63,8 @@ example
 			},5000); // stop recording after 5 sec
 	</script>
 
+without 3rd argument stop still works and its acts exactly as pause
+
 this could be any simpler, it will simply output the recorded file into this div, and thn
 after using clear, next recording gets appended to this place
 

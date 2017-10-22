@@ -75,14 +75,14 @@ A_Audio.prototype.ouput_recorder_audio=function(output){
 	if(this.recorder)this.createDownloadLink(function(){},output);
 };
 
-A_Audio.prototype.get_file_formdata=function(){
+A_Audio.prototype.get_file_formdata=function(success){
 	if(this.recorder){
 		this.recorder.exportWAV(function(blob) {
 			window.URL = window.URL ||  window.webkitURL || window.msURL;
 			if(!URL){error();console.log("Error Parsing URL");return;}
-			formData = new FormData();
+			formData=new FormData();
 			formData.append('file', blob);
-			return formData;
+			success(formData);
 
 		});	
 	}else{

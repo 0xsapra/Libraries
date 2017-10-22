@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="../lib.js" type="text/javascript" charset="utf-8" async defer></script>	
+
+</head>
+
+<body>
+	<button id="b">start</button>
+	<button id="b1">pause</button>
+	<button id="b2">display</button>
+	<button id="b3">clear</button>
+	
+	<button id="upload">upload</button>
+
+
+	<div id="output">
+		
+	</div>
+</body>
+
+<script>
+		var data;
+
+	window.onload=function(){
+		AudioContext = window.AudioContext || window.webkitAudioContext || window.msAudioContext;
+		var audiocontext=new AudioContext();
+		audio=new A_Audio(audiocontext);
+
+		var output=document.getElementById('output');
+
+
+		
+		document.getElementById('b').addEventListener('click',function(){
+			audio.record_live(function(){
+				console.log('Error');
+			},function(){
+				console.log('Recording');
+			});
+
+		});
+		document.getElementById('b1').addEventListener('click',function(){
+			audio.stop(function(){},function(){});  // without 3rd arguments stop wroks same as pause
+			//  we can use this or audio.pause();
+		});
+		document.getElementById('b2').addEventListener('click',function(){
+			audio.stop(function(){},function(){},output);
+		});
+		document.getElementById('b3').addEventListener('click',function(){
+			audio.clear();
+		});
+
+		document.getElementById('upload').addEventListener('click',function(){
+			audio.stop(function(){},function(){console.log('stopped');});  // without 3rd arguments stop wroks same as pause
+			audio.get_file_formdata(function(recieved_data){
+					var xhr=new XMLHttpRequest();
+					xhr.open('post','upload.php');
+					xhr.onload=function(){
+						document.body.innerHTML+=xhr.responseText;
+					};
+					xhr.send(recieved_data);
+				});  // so simple 
+			
+			// we hve now recieved the data back, now we can upload using ajax like:
+			 // sending post data , the fileData format
+
+		});
+
+		
+	};
+	
+	function success(){
+		console.log(2);
+	}
+	function err(){
+
+	}
+	
+</script>
+</html>

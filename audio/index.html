@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="lib.js" type="text/javascript" charset="utf-8" async defer></script>	
+
+</head>
+
+<body>
+	<button id="b">start</button>
+	<button id="b1">stop</button>
+	
+	<div id=check></div>
+	<audio autobuffer autoloop loop controls id='a1'>
+		<source src="../fitoor.mp3">
+	</audio>
+
+	<div id="bar">
+    <div id="P10" class="p"></div>
+    <div id="P20" class="p"></div>
+    <div id="P30" class="p"></div>
+    <div id="P40" class="p"></div>
+    <div id="P50" class="p"></div>
+    <div id="P60" class="p"></div>
+    <div id="P70" class="p"></div>
+    <div id="P80" class="p"></div>
+    <div id="P90" class="p"></div>
+</div>
+ <style>
+    #bar {
+        position: fixed;
+        top: 20%;
+        left: 40%;
+        width: 40%;
+        height: 40%;
+        -webkit-transition: 0.1s ease all;
+    }
+
+    .p {
+        background-color: blue;
+        height: 100%;
+        width: 10%;
+        float: left;
+    }
+
+</style>
+</body>
+
+<script>
+
+	window.onload=function(){
+		AudioContext = window.AudioContext || window.webkitAudioContext || window.msAudioContext;
+		var audiocontext=new AudioContext();
+		audio=new A_Audio(audiocontext);
+
+		var output=document.getElementById('check');
+		var aud_file=document.getElementById('a1');
+
+		// audio.record_live(err,success);
+		// audio.pause();
+		// audio.record_live(err,success);
+		// audio.stop(err,success,[createLink]);
+		// audio.ouput_recorder_audio(ouput_place); // if not cleared thn usme data recorded will stay
+		// formdata=audio.get_file_formdata(); //returns formData object which thn can be passed along with ajax/php whtever u want
+		// audio.clear();
+		// audio.get_spikes_live(function(){},function(spikes){console.log(spikes)},64) // default 32 and power of 2 and spikes values returned is in percentage, 100 means full
+		// audio.get_spikes_media(function(){},function(spikes){console.log(spikes)},64,media_file);
+
+		// audio.get_liveData_Amplitude(err,function(data){
+		// 		gives_output 0-100 on input 
+		// },donot_output=true/false);
+	};
+	
+	function success(){
+		console.log(2);
+	}
+	function err(){
+
+	}
+	
+</script>
+</html>
